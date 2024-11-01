@@ -1,7 +1,7 @@
-import 'package:book/feature/presetation/screens/home/home_page.dart';
+import 'package:book/feature/presetation/screens/home/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const HomePage());
+  runApp(const Home());
 }
 
