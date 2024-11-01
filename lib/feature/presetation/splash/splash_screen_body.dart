@@ -1,5 +1,5 @@
 import 'package:book/core/utils/asset.dart';
-import 'package:book/feature/presetation/screens/home/home_view.dart';
+import 'package:book/feature/presetation/screens/home/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
