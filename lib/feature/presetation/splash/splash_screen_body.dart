@@ -1,4 +1,5 @@
 import 'package:book/core/utils/asset.dart';
+import 'package:book/feature/presetation/screens/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -12,22 +13,14 @@ class SplashScreenBody extends StatefulWidget {
 class _SplashScreenBodyState extends State<SplashScreenBody>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
-
   late Animation<double> scaleAnimation;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    animationController = AnimationController(
-      duration: const Duration(seconds: 1),
-      vsync: this,
-    );
-    scaleAnimation = Tween<double>(
-      begin: 0,
-      end: 1,
-    ).animate(animationController);
-    animationController.forward();
+    initScaleAnimation();
+    navigatorToHome();
   }
 
   @override
@@ -48,6 +41,18 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
     );
   }
 
+  void initScaleAnimation() {
+    animationController = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    );
+    scaleAnimation = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(animationController);
+    animationController.forward();
+  }
+
   AnimatedBuilder scaleAnimationBuilder() {
     return AnimatedBuilder(
         animation: scaleAnimation,
@@ -60,5 +65,11 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
             ),
           );
         });
+  }
+
+  void navigatorToHome() {
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushReplacementNamed(context, HomeView.routeName);
+    });
   }
 }
