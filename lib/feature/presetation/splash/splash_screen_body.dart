@@ -1,7 +1,9 @@
+import 'package:book/core/utils/app_router.dart';
 import 'package:book/core/utils/asset.dart';
-import 'package:book/feature/presetation/screens/home/views/home_view.dart';
+import 'package:book/feature/presetation/screens/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashScreenBody extends StatefulWidget {
   const SplashScreenBody({super.key});
@@ -43,12 +45,12 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
 
   void initScaleAnimation() {
     animationController = AnimationController(
-      duration: const Duration(seconds: 1),
+      duration: const Duration(seconds: 2),
       vsync: this,
     );
     scaleAnimation = Tween<double>(
       begin: 0,
-      end: 1,
+      end: 1.5,
     ).animate(animationController);
     animationController.forward();
   }
@@ -69,7 +71,9 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
 
   void navigatorToHome() {
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, HomeView.routeName);
+      GoRouter.of(context).push(
+        AppRouter.homeView,
+      );
     });
   }
 }

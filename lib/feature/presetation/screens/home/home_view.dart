@@ -1,11 +1,10 @@
 import 'package:book/core/utils/styles.dart';
 import 'package:flutter/material.dart';
-import 'best_seller_list.dart';
-import 'book_list_view.dart';
-import 'custom_app_bar.dart';
+import 'views/best_seller_list.dart';
+import 'views/book_list_view.dart';
+import 'views/custom_app_bar.dart';
 
 class HomeView extends StatelessWidget {
-  static String routeName = "home";
 
   const HomeView({super.key});
 
@@ -29,7 +28,7 @@ class HomeView extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-            ]),
+            ],),
           ),
           const SliverFillRemaining(
             child: BestSellerList(),
