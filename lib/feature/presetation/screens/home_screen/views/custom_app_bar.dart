@@ -14,7 +14,7 @@ class CustomAppBar extends StatelessWidget {
     double height = MediaQuery.sizeOf(context).height;
     return Padding(
       padding: EdgeInsets.only(
-        top: height * 0.05,
+        top: height * 0.02,
         left: width * 0.05,
         right: width * 0.05,
         bottom: height * 0.02,

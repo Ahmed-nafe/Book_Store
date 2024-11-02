@@ -1,3 +1,4 @@
+import 'package:book/core/utils/appcolors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/styles.dart';
@@ -8,7 +9,6 @@ class BookRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         const Icon(Icons.star, color: Colors.yellow),
         SizedBox(
@@ -23,7 +23,9 @@ class BookRating extends StatelessWidget {
         ),
         Text(
           "(2390)",
-          style: Styles.textStyle14.copyWith(color: const Color(0xff707070)),
+          style: Styles.textStyle14.copyWith(
+            color: AppColors.mediumGray,
+          ),
         ),
       ],
     );
