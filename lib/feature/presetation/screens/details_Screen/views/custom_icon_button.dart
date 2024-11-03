@@ -1,3 +1,4 @@
+import 'package:book/core/utils/appcolors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/styles.dart';
@@ -19,7 +20,9 @@ class CustomIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
+
       style: TextButton.styleFrom(
+        foregroundColor: AppColors.blackColor,
         shape: RoundedRectangleBorder(
           borderRadius: borderRadius,
         ),

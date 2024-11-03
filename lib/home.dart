@@ -1,7 +1,7 @@
 import 'package:book/core/utils/appcolors.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/app_router.dart';
+import 'core/utils/app_router.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});

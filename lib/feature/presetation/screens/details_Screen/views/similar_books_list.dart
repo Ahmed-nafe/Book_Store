@@ -8,23 +8,21 @@ class SimilarBookList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: 15,
-          itemBuilder: (context, index) {
-            return AspectRatio(
-              aspectRatio: 2.2 / 4,
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 5),
-                decoration: BoxDecoration(
-                  image: const DecorationImage(
-                      image: AssetImage(AssetsData.testImage)),
-                  borderRadius: BorderRadius.circular(15),
+    return ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return AspectRatio(
+            aspectRatio: 3 / 4,
+            child: Container(
+              decoration: BoxDecoration(
+                image: const DecorationImage(
+                  image: AssetImage(AssetsData.testImage),
                 ),
+                borderRadius: BorderRadius.circular(16),
               ),
-            );
-          }),
-    );
+            ),
+          );
+        });
   }
 }

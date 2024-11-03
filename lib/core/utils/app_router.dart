@@ -1,3 +1,4 @@
+import 'package:book/feature/presetation/screens/search_screen/search_view.dart';
 import 'package:book/feature/presetation/splash/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 import '../../feature/presetation/screens/details_Screen/book_details_view.dart';
@@ -6,6 +7,7 @@ import '../../feature/presetation/screens/home_screen/home_view.dart';
 abstract class AppRouter {
   static String homeView ="/homeView";
   static String detailsView = "/detailsView";
+  static String searchView = "/searchView";
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -17,9 +19,14 @@ abstract class AppRouter {
         builder: (context, state) => const HomeView(),
       ),
       GoRoute(
+        path: searchView,
+        builder: (context, state) => const SearchView(),
+      ),
+      GoRoute(
         path: detailsView,
         builder: (context, state) => const BookDetailsView(),
       ),
+
     ],
   );
 }
