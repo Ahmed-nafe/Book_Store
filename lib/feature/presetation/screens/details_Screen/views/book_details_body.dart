@@ -1,10 +1,12 @@
 import 'package:book/core/utils/appcolors.dart';
 import 'package:book/core/utils/styles.dart';
+import 'package:book/feature/presetation/screens/details_Screen/views/build_custom_button.dart';
+import 'package:book/feature/presetation/screens/details_Screen/views/similar_books_list.dart';
 import 'package:book/feature/presetation/screens/home_screen/views/book_rating.dart';
 import 'package:book/feature/presetation/screens/home_screen/views/feature_list_view_items.dart';
 import 'package:flutter/material.dart';
+import '../../../../../core/utils/asset.dart';
 import 'custom_details_app_bar.dart';
-import 'custom_icon_button.dart';
 
 class BookDetailsBody extends StatelessWidget {
   const BookDetailsBody({super.key});
@@ -21,7 +23,7 @@ class BookDetailsBody extends StatelessWidget {
           const CustomDetailsAppBar(),
           Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.sizeOf(context).width * 0.17,
+              horizontal: MediaQuery.sizeOf(context).width * 0.22,
               vertical: MediaQuery.sizeOf(context).height * 0.03,
             ),
             child: const FeatureListViewItems(),
@@ -48,38 +50,22 @@ class BookDetailsBody extends StatelessWidget {
           const BookRating(
             mainAxisAlignment: MainAxisAlignment.center,
           ),
-          buildCustomButton()
+          const BuildCustomButton(),
+          const SizedBox(
+            height: 49,
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "You can also like",
+              style: AppStyles.textStyle14.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+          const SimilarBookList()
         ],
       ),
     );
-  }
-
-  Widget buildCustomButton() {
-    return Row(
-          children: [
-            Expanded(
-              child: CustomIconButton(
-                text: "19.99€",
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  bottomLeft: Radius.circular(15),
-                ),
-                buttonColor: AppColors.whitePrimary.withOpacity(1),
-                textColor: AppColors.blackColor,
-              ),
-            ),
-            Expanded(
-              child: CustomIconButton(
-                text: "Free preview",
-                borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(15),
-                  bottomRight: Radius.circular(15),
-                ),
-                buttonColor: const Color(0xffEF8262),
-                textColor: AppColors.whitePrimary,
-              ),
-            )
-          ],
-        );
   }
 }
