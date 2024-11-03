@@ -2,7 +2,6 @@ import 'package:book/core/utils/app_router.dart';
 import 'package:book/core/utils/appcolors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../../../../core/utils/asset.dart';
 import '../../../../../core/utils/styles.dart';
 import 'book_rating.dart';
@@ -38,14 +37,14 @@ class BuildListItems extends StatelessWidget {
                   children: [
                     const Text(
                       "Harry Potter and the Goblet of Fire ",
-                      style: Styles.textStyle20,
+                      style: AppStyles.textStyle20,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       softWrap: true,
                     ),
                      Text(
                       "J.K. Rowling",
-                      style: Styles.textStyle14.copyWith(color: AppColors.mediumGray),
+                      style: AppStyles.textStyle14.copyWith(color: AppColors.whitePrimary),
                     ),
                     const SizedBox(
                       height: 3,
@@ -57,7 +56,7 @@ class BuildListItems extends StatelessWidget {
                         children: [
                           Text(
                             "12.99",
-                            style: Styles.textStyle20.copyWith(
+                            style: AppStyles.textStyle20.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
                           ),

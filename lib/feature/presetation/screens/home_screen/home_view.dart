@@ -25,7 +25,7 @@ class HomeView extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 35.0, left: 15),
                   child: Text(
                     "Best Seller",
-                    style: Styles.titleMedium,
+                    style: AppStyles.titleMedium,
                   ),
                 ),
                 const SizedBox(

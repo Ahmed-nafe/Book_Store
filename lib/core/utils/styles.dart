@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/src/painting/text_style.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-abstract class Styles {
+abstract class AppStyles {
   static TextStyle titleMedium = GoogleFonts.montserrat(
     fontSize: 18,
     fontWeight: FontWeight.w600,
