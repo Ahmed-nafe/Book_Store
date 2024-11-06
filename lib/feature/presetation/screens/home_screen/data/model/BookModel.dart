@@ -1,47 +1,15 @@
 class BookModel {
   BookModel({
-      this.kind, 
-      this.totalItems, 
-      this.items,});
+    this.kind,
+    this.id,
+    this.etag,
+    this.selfLink,
+    this.volumeInfo,
+    this.saleInfo,
+    this.accessInfo,
+    this.searchInfo,});
 
   BookModel.fromJson(dynamic json) {
-    kind = json['kind'];
-    totalItems = json['totalItems'];
-    if (json['items'] != null) {
-      items = [];
-      json['items'].forEach((v) {
-        items?.add(Items.fromJson(v));
-      });
-    }
-  }
-  String? kind;
-  int? totalItems;
-  List<Items>? items;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['kind'] = kind;
-    map['totalItems'] = totalItems;
-    if (items != null) {
-      map['items'] = items?.map((v) => v.toJson()).toList();
-    }
-    return map;
-  }
-
-}
-
-class Items {
-  Items({
-      this.kind, 
-      this.id, 
-      this.etag, 
-      this.selfLink, 
-      this.volumeInfo, 
-      this.saleInfo, 
-      this.accessInfo, 
-      this.searchInfo,});
-
-  Items.fromJson(dynamic json) {
     kind = json['kind'];
     id = json['id'];
     etag = json['etag'];
@@ -85,7 +53,7 @@ class Items {
 
 class SearchInfo {
   SearchInfo({
-      this.textSnippet,});
+    this.textSnippet,});
 
   SearchInfo.fromJson(dynamic json) {
     textSnippet = json['textSnippet'];
@@ -102,16 +70,16 @@ class SearchInfo {
 
 class AccessInfo {
   AccessInfo({
-      this.country, 
-      this.viewability, 
-      this.embeddable, 
-      this.publicDomain, 
-      this.textToSpeechPermission, 
-      this.epub, 
-      this.pdf, 
-      this.webReaderLink, 
-      this.accessViewStatus, 
-      this.quoteSharingAllowed,});
+    this.country,
+    this.viewability,
+    this.embeddable,
+    this.publicDomain,
+    this.textToSpeechPermission,
+    this.epub,
+    this.pdf,
+    this.webReaderLink,
+    this.accessViewStatus,
+    this.quoteSharingAllowed,});
 
   AccessInfo.fromJson(dynamic json) {
     country = json['country'];
@@ -159,7 +127,7 @@ class AccessInfo {
 
 class Pdf {
   Pdf({
-      this.isAvailable,});
+    this.isAvailable,});
 
   Pdf.fromJson(dynamic json) {
     isAvailable = json['isAvailable'];
@@ -176,7 +144,7 @@ class Pdf {
 
 class Epub {
   Epub({
-      this.isAvailable,});
+    this.isAvailable,});
 
   Epub.fromJson(dynamic json) {
     isAvailable = json['isAvailable'];
@@ -193,9 +161,9 @@ class Epub {
 
 class SaleInfo {
   SaleInfo({
-      this.country, 
-      this.saleability, 
-      this.isEbook,});
+    this.country,
+    this.saleability,
+    this.isEbook,});
 
   SaleInfo.fromJson(dynamic json) {
     country = json['country'];
@@ -218,25 +186,25 @@ class SaleInfo {
 
 class VolumeInfo {
   VolumeInfo({
-      this.title, 
-      this.authors, 
-      this.publisher, 
-      this.publishedDate, 
-      this.description, 
-      this.industryIdentifiers, 
-      this.readingModes, 
-      this.pageCount, 
-      this.printType, 
-      this.categories, 
-      this.maturityRating, 
-      this.allowAnonLogging, 
-      this.contentVersion, 
-      this.panelizationSummary, 
-      this.imageLinks, 
-      this.language, 
-      this.previewLink, 
-      this.infoLink, 
-      this.canonicalVolumeLink,});
+    this.title,
+    this.authors,
+    this.publisher,
+    this.publishedDate,
+    this.description,
+    this.industryIdentifiers,
+    this.readingModes,
+    this.pageCount,
+    this.printType,
+    this.categories,
+    this.maturityRating,
+    this.allowAnonLogging,
+    this.contentVersion,
+    this.panelizationSummary,
+    this.imageLinks,
+    this.language,
+    this.previewLink,
+    this.infoLink,
+    this.canonicalVolumeLink,});
 
   VolumeInfo.fromJson(dynamic json) {
     title = json['title'];
@@ -320,8 +288,8 @@ class VolumeInfo {
 
 class ImageLinks {
   ImageLinks({
-      this.smallThumbnail, 
-      this.thumbnail,});
+    this.smallThumbnail,
+    this.thumbnail,});
 
   ImageLinks.fromJson(dynamic json) {
     smallThumbnail = json['smallThumbnail'];
@@ -341,8 +309,8 @@ class ImageLinks {
 
 class PanelizationSummary {
   PanelizationSummary({
-      this.containsEpubBubbles, 
-      this.containsImageBubbles,});
+    this.containsEpubBubbles,
+    this.containsImageBubbles,});
 
   PanelizationSummary.fromJson(dynamic json) {
     containsEpubBubbles = json['containsEpubBubbles'];
@@ -362,8 +330,8 @@ class PanelizationSummary {
 
 class ReadingModes {
   ReadingModes({
-      this.text, 
-      this.image,});
+    this.text,
+    this.image,});
 
   ReadingModes.fromJson(dynamic json) {
     text = json['text'];
@@ -383,8 +351,8 @@ class ReadingModes {
 
 class IndustryIdentifiers {
   IndustryIdentifiers({
-      this.type, 
-      this.identifier,});
+    this.type,
+    this.identifier,});
 
   IndustryIdentifiers.fromJson(dynamic json) {
     type = json['type'];

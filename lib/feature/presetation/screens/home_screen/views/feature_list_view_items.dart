@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/asset.dart';
 
 class FeatureListViewItems extends StatelessWidget {
-  const FeatureListViewItems({super.key});
-
+  const FeatureListViewItems({super.key, required this.imageUrl});
+final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,12 +13,12 @@ class FeatureListViewItems extends StatelessWidget {
         aspectRatio: 2.8 / 4,
         child: Container(
           decoration: BoxDecoration(
-            image: const DecorationImage(
+            image:  DecorationImage(
               fit: BoxFit.cover,
-              image: AssetImage(AssetsData.testImage),
+              image: NetworkImage(imageUrl),
             ),
             borderRadius: BorderRadius.circular(15),
-            color: Colors.white,
+
           ),
         ),
       ),

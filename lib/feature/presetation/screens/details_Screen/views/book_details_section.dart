@@ -18,7 +18,9 @@ class BookDetailsSection extends StatelessWidget {
             horizontal: MediaQuery.sizeOf(context).width * 0.22,
             vertical: MediaQuery.sizeOf(context).height * 0.03,
           ),
-          child: const FeatureListViewItems(),
+          child: const FeatureListViewItems(
+            imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrTPjHOG0LBJKLlx35kYcK4hpx5xRdGNQ4tQ&s",
+          ),
         ),
         const Text(
           "Harry Potter and the Goblet of Fire ",
