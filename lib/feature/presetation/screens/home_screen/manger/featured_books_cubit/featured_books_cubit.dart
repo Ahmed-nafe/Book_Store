@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:book/feature/presetation/screens/home_screen/data/model/BookModel.dart';
+import 'package:book/feature/presetation/screens/home_screen/data/model/BooksModel.dart';
 import 'package:book/feature/presetation/screens/home_screen/data/repos/home_repo.dart';
 import 'package:flutter/cupertino.dart';
 part 'featured_books_state.dart';

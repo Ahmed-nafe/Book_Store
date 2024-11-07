@@ -2,6 +2,7 @@ import 'package:book/feature/presetation/screens/home_screen/manger/featured_boo
 import 'package:book/feature/presetation/screens/home_screen/views/feature_list_view_items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 
 class BookListView extends StatelessWidget {
   const BookListView({
@@ -22,14 +23,32 @@ class BookListView extends StatelessWidget {
               itemBuilder: (context, index) {
                 final book = state.books[index];
                 return FeatureListViewItems(
-                  imageUrl:
-                      book.volumeInfo?.imageLinks?.thumbnail! ?? "",
+                  imageUrl: book.items?[0].volumeInfo?.imageLinks?.thumbnail! ?? "",
                 );
               },
             ),
           );
         } else if (state is FeaturedBooksLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return SizedBox(
+            height: height * 0.25,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return Shimmer.fromColors(
+                  baseColor: Colors.grey[300]!,
+                  highlightColor: Colors.grey[100]!,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    margin: const EdgeInsets.all(8.0),
+                    width: 150,
+                  ),
+                );
+              },
+            ),
+          );
         } else if (state is FeaturedBooksError) {
           return Center(child: Text(state.errorMessage));
         } else {

@@ -10,7 +10,7 @@ final class FeaturedBooksError extends FeaturedBooksState {
   FeaturedBooksError(this.errorMessage);
 }
 final class FeaturedBooksSuccess extends FeaturedBooksState {
-  final List <BookModel> books;
+  final List <BooksModel> books;
   FeaturedBooksSuccess(this.books);
 
 }

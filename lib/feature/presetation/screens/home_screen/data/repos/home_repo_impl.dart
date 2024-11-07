@@ -1,9 +1,9 @@
 import 'package:book/core/utils/api_manger.dart';
 import 'package:book/core/utils/errors.dart';
+import 'package:book/feature/presetation/screens/home_screen/data/model/BooksModel.dart';
 import 'package:book/feature/presetation/screens/home_screen/data/repos/home_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import '../model/BookModel.dart';
 
 class HomeRepoImpl implements HomeRepo {
   ApiManger apiManger;
@@ -11,20 +11,23 @@ class HomeRepoImpl implements HomeRepo {
   HomeRepoImpl(this.apiManger);
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
+  Future<Either<Failure, List<BooksModel>>> fetchNewestBooks() async {
     try {
       var response = await apiManger.get(
           endPoint:
-              "volumes?q=Programming&Filtering=free-ebooks&Sorting=newest");
-      // final bookModel = BookModel.fromJson(response);
-      //
-      // final books =
-      //     bookModel.items?.map((item) => BookModel.fromJson(item)).toList();
-      List<BookModel> books = [];
-      for (var item in response["items"]) {
-        books.add(BookModel.fromJson(item));
-      }
-
+          "volumes?q=computer science&Filtering=free-ebooks&Sorting=newest");
+      BooksModel bookModel = BooksModel.fromJson(response);
+      final books = bookModel.items?.map((item) {
+        return BooksModel(
+          kind: bookModel.kind,
+          totalItems: bookModel.totalItems,
+          items: [item],
+        );
+      }).toList() ?? [];
+      // List<ComputerScienceModel> books = [];
+      // for (var item in response["items"]) {
+      //   books.add(ComputerScienceModel.fromJson(item));
+      // }
       return Right(books);
     } on Exception catch (e) {
       if (e is DioException) {
@@ -38,22 +41,54 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
+  Future<Either<Failure, List<BooksModel>>> fetchFeaturedBooks() async {
     try {
       var response = await apiManger.get(
           endPoint: "volumes?q=Programming&Filtering=free-ebooks");
-      // BookModel bookModel = BookModel.fromJson(response);
-      // final books = bookModel.items?.map((item) {
-      //   return BookModel(
-      //     kind: bookModel.kind,
-      //     totalItems: bookModel.totalItems,
-      //     items: [item],
-      //   );
-      // }).toList() ?? [];
-      List<BookModel> books = [];
-      for (var item in response["items"]) {
-        books.add(BookModel.fromJson(item));
+      BooksModel bookModel = BooksModel.fromJson(response);
+      final books = bookModel.items?.map((item) {
+        return BooksModel(
+          kind: bookModel.kind,
+          totalItems: bookModel.totalItems,
+          items: [item],
+        );
+      }).toList() ??
+          [];
+      // List<ProgrammingModel> books = [];
+      // for (var item in response["items"]) {
+      //   books.add(ProgrammingModel.fromJson(item));
+      // }
+      return Right(books);
+    } on Exception catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(
+          ServerFailure(e.toString()),
+        );
       }
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<BooksModel>>> fetchSimilarBooks(
+      {required String category}) async {
+    try {
+      var response = await apiManger.get(
+          endPoint: "volumes?q=computer science&Filtering=free-ebooks&Sorting=relevance");
+      BooksModel bookModel = BooksModel.fromJson(response);
+      final books = bookModel.items?.map((item) {
+        return BooksModel(
+          kind: bookModel.kind,
+          totalItems: bookModel.totalItems,
+          items: [item],
+        );
+      }).toList() ??
+          [];
+      // List<ProgrammingModel> books = [];
+      // for (var item in response["items"]) {
+      //   books.add(ProgrammingModel.fromJson(item));
+      // }
       return Right(books);
     } on Exception catch (e) {
       if (e is DioException) {

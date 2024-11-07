@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../home_screen/views/build_list_Items.dart';
+import '../../home_screen/views/build_newest_list_Items.dart';
 
 class SearchResultList extends StatelessWidget {
   const SearchResultList({
@@ -14,7 +14,9 @@ class SearchResultList extends StatelessWidget {
       child: ListView.builder(
           itemCount: 15,
           itemBuilder: (context, index) {
-            return const BuildListItems();
+            return Padding(
+                padding: EdgeInsets.all(15),
+                child: Text("data"));
           }),
     );
   }

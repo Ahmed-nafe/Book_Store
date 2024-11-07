@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../core/utils/appcolors.dart';
 import '../../../../../core/utils/styles.dart';
 import '../../home_screen/views/book_rating.dart';
@@ -41,9 +40,9 @@ class BookDetailsSection extends StatelessWidget {
         const SizedBox(
           height: 18,
         ),
-        const BookRating(
-          mainAxisAlignment: MainAxisAlignment.center,
-        ),
+        // const BookRating(
+        //   mainAxisAlignment: MainAxisAlignment.center, rating: ,
+        // ),
         const BuildCustomButton(),
       ],
     );
