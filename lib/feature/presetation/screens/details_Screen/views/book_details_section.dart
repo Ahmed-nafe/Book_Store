@@ -1,3 +1,4 @@
+import 'package:book/feature/presetation/screens/home_screen/data/model/BooksModel.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/appcolors.dart';
 import '../../../../../core/utils/styles.dart';
@@ -6,7 +7,9 @@ import '../../home_screen/views/feature_list_view_items.dart';
 import 'build_custom_button.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key});
+  BookDetailsSection({super.key, required this.booksModel});
+
+  BooksModel booksModel;
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +20,13 @@ class BookDetailsSection extends StatelessWidget {
             horizontal: MediaQuery.sizeOf(context).width * 0.22,
             vertical: MediaQuery.sizeOf(context).height * 0.03,
           ),
-          child: const FeatureListViewItems(
-            imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrTPjHOG0LBJKLlx35kYcK4hpx5xRdGNQ4tQ&s",
+          child: FeatureListViewItems(
+            imageUrl:
+                booksModel.items?[0].volumeInfo?.imageLinks?.thumbnail! ?? "",
           ),
         ),
-        const Text(
-          "Harry Potter and the Goblet of Fire ",
+        Text(
+          booksModel.items![0].volumeInfo!.title!,
           style: AppStyles.textStyle30,
           textAlign: TextAlign.center,
         ),
@@ -30,7 +34,7 @@ class BookDetailsSection extends StatelessWidget {
           height: 6,
         ),
         Text(
-          "Rudyard Kipling",
+          booksModel.items![0].volumeInfo!.authors![0],
           textAlign: TextAlign.center,
           style: AppStyles.textStyle18.copyWith(
             color: AppColors.whitePrimary.withOpacity(0.7),
@@ -40,10 +44,12 @@ class BookDetailsSection extends StatelessWidget {
         const SizedBox(
           height: 18,
         ),
-        // const BookRating(
-        //   mainAxisAlignment: MainAxisAlignment.center, rating: ,
-        // ),
-        const BuildCustomButton(),
+         const BookRating(
+          mainAxisAlignment: MainAxisAlignment.center,
+        ),
+        BuildCustomButton(
+          booksModel: booksModel,
+        ),
       ],
     );
   }

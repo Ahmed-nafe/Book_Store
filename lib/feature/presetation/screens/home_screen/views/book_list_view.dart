@@ -1,7 +1,9 @@
+import 'package:book/core/utils/app_router.dart';
 import 'package:book/feature/presetation/screens/home_screen/manger/featured_books_cubit/featured_books_cubit.dart';
 import 'package:book/feature/presetation/screens/home_screen/views/feature_list_view_items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 
 class BookListView extends StatelessWidget {
@@ -22,8 +24,18 @@ class BookListView extends StatelessWidget {
               itemCount: state.books.length,
               itemBuilder: (context, index) {
                 final book = state.books[index];
-                return FeatureListViewItems(
-                  imageUrl: book.items?[0].volumeInfo?.imageLinks?.thumbnail! ?? "",
+                return InkWell(
+                  highlightColor: Colors.transparent,
+                  onTap: () {
+                    GoRouter.of(context).push(
+                      AppRouter.detailsView,
+                      extra: book,
+                    );
+                  },
+                  child: FeatureListViewItems(
+                    imageUrl:
+                        book.items?[0].volumeInfo?.imageLinks?.thumbnail! ?? "",
+                  ),
                 );
               },
             ),

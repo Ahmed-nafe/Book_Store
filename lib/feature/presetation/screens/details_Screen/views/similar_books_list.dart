@@ -1,7 +1,6 @@
 import 'package:book/feature/presetation/screens/home_screen/manger/similar_books_cubit/similar_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/utils/asset.dart';
 
 class SimilarBookList extends StatelessWidget {
   const SimilarBookList({
@@ -21,17 +20,18 @@ class SimilarBookList extends StatelessWidget {
                 return AspectRatio(
                   aspectRatio: 3 / 4,
                   child: Container(
+                    margin: const EdgeInsets.only(left: 9),
                     decoration: BoxDecoration(
-                      image: const DecorationImage(
-                        image: AssetImage(AssetsData.testImage),
+                      image: DecorationImage(
+                        image: NetworkImage(
+                            books?.volumeInfo?.imageLinks?.thumbnail! ?? ""),
                       ),
                       borderRadius: BorderRadius.circular(16),
                     ),
                   ),
                 );
               });
-        }
-        else if (state is SimilarBooksLoading) {
+        } else if (state is SimilarBooksLoading) {
           return const Center(
             child: CircularProgressIndicator(),
           );

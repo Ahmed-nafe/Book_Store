@@ -10,17 +10,18 @@ class CustomIconButton extends StatelessWidget {
     required this.buttonColor,
     required this.borderRadius,
     required this.text,
+    required this.onPressed,
   });
 
   final String text;
   final Color textColor;
   final Color buttonColor;
   final BorderRadius borderRadius;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-
       style: TextButton.styleFrom(
         foregroundColor: AppColors.blackColor,
         shape: RoundedRectangleBorder(
@@ -28,7 +29,7 @@ class CustomIconButton extends StatelessWidget {
         ),
         backgroundColor: buttonColor,
       ),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Text(
         text,
         style: AppStyles.textStyle18.copyWith(

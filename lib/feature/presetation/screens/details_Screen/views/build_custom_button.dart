@@ -1,10 +1,14 @@
+import 'package:book/feature/presetation/screens/home_screen/data/model/BooksModel.dart';
 import 'package:flutter/material.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../../core/utils/appcolors.dart';
 import 'custom_icon_button.dart';
 
 class BuildCustomButton extends StatelessWidget {
-  const BuildCustomButton({super.key});
+  BuildCustomButton({super.key, required this.booksModel});
+
+  BooksModel booksModel;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +20,8 @@ class BuildCustomButton extends StatelessWidget {
         children: [
           Expanded(
             child: CustomIconButton(
-              text: "19.99€",
+              onPressed: () {},
+              text: "Free",
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(15),
                 bottomLeft: Radius.circular(15),
@@ -25,19 +30,45 @@ class BuildCustomButton extends StatelessWidget {
               textColor: AppColors.blackColor,
             ),
           ),
-          const Expanded(
+          Expanded(
             child: CustomIconButton(
-              text: "Free preview",
-              borderRadius: BorderRadius.only(
+              onPressed: () async {
+                launcherCustomUrl(
+                  context,
+                  uri: booksModel.items?[0].volumeInfo?.previewLink,
+                );
+              },
+              text: booksModel.items?[0].volumeInfo?.previewLink == null
+                  ? "Not Available"
+                  : "Free preview",
+              borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(15),
                 bottomRight: Radius.circular(15),
               ),
-              buttonColor: Color(0xffEF8262),
+              buttonColor: const Color(0xffEF8262),
               textColor: AppColors.whitePrimary,
             ),
           )
         ],
       ),
     );
+  }
+
+  Future<void> launcherCustomUrl(context, {required String? uri}) async {
+    if (uri != null) {
+      Uri url = Uri.parse(uri);
+      if (await canLaunchUrl(url)) {
+        await launchUrl(url);
+      } else {
+        Fluttertoast.showToast(
+            msg: "Cannot launch $uri",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0);
+      }
+    }
   }
 }
