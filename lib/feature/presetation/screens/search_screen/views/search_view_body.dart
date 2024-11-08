@@ -1,11 +1,17 @@
 import 'package:book/core/utils/styles.dart';
+import 'package:book/feature/presetation/screens/search_screen/manger/search_book_cubit.dart';
 import 'package:book/feature/presetation/screens/search_screen/views/search_result_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'custom_text_filed.dart';
 
 class SearchViewBody extends StatelessWidget {
   const SearchViewBody({super.key});
+
+  void searchBooks(BuildContext context, String query) {
+    context.read<SearchBookCubit>().fetchSearchResults(query);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +26,14 @@ class SearchViewBody extends StatelessWidget {
               },
               icon: const Icon(Icons.arrow_back),
             ),
-            const Expanded(
+            Expanded(
               child: Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: CustomTextField(),
+                padding: const EdgeInsets.only(right: 20.0),
+                child: CustomTextField(
+                  onSearch: (query) {
+                    return searchBooks(context, query);
+                  },
+                ),
               ),
             ),
           ],

@@ -1,23 +1,33 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
+  final TextEditingController? controller;
+  final Function(String)? onSearch;
+
   const CustomTextField({
-    super.key,
-  });
+    Key? key,
+    this.controller,
+    this.onSearch,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
       child: TextField(
+        controller: controller,
         keyboardType: TextInputType.text,
-        onTap: () {},
+        onSubmitted: onSearch,
         decoration: InputDecoration(
           enabledBorder: buildOutlineInputBorder(),
           focusedBorder: buildOutlineInputBorder(),
-          label: const Text("search"),
+          labelText: "Search",
           suffixIcon: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              if (onSearch != null && controller != null) {
+                onSearch!(controller!.text);
+              }
+            },
             icon: const Icon(Icons.search),
           ),
         ),

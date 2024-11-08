@@ -2,6 +2,8 @@ import 'package:book/core/utils/appcolors.dart';
 import 'package:book/core/utils/services_locator.dart';
 import 'package:book/feature/presetation/screens/home_screen/data/repos/home_repo_impl.dart';
 import 'package:book/feature/presetation/screens/home_screen/manger/featured_books_cubit/featured_books_cubit.dart';
+import 'package:book/feature/presetation/screens/search_screen/data/repos/search_repo_impl.dart';
+import 'package:book/feature/presetation/screens/search_screen/manger/search_book_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/utils/app_router.dart';

@@ -35,8 +35,7 @@ class NewestListItemsBody extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10.0),
               child: CachedNetworkImage(
                 imageUrl:
-                    (bookModel.items?[0].volumeInfo?.imageLinks!.thumbnail ??
-                        ""),
+                    bookModel.items?[0].volumeInfo?.imageLinks!.thumbnail ?? "",
                 errorWidget: (context, url, error) => const Center(
                   child: CircularProgressIndicator(),
                 ),
